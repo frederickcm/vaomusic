@@ -1,16 +1,16 @@
 {
-  "name": "chat-example",
-  "version": "0.0.0",
-  "description": "A chat example to showcase how to use `socket.io` with a static `express` server",
+  "name": "vaomusic",
+  "version": "1.0.0",
+  "description": "Un multitrak online",
   "main": "server.js",
   "repository": "",
-  "author": "Mostafa Eweda <mostafa@c9.io>",
+  "author": "Frederick Castro M",
   "dependencies": {
     "express": "^4.16.4",
     "webpack": "^5.38.1"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node ./public/server.js",
     "build": "dir"
   },
   "engines": {

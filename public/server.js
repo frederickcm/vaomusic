@@ -38,7 +38,7 @@ server.listen(PORT || 3000, addrIP || "0.0.0.0", () => {
 });
 
 // routing
-app.get("/", (req, res) => res.sendfile(__dirname + "/index.html"+__dirname));
+app.get("/", (req, res) => res.sendfile(__dirname + "/index.html"));
 
 // routing
 app.get("/track", async (req, res) => {
