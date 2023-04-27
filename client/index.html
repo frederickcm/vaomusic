@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-        <title>MT5, the HTML5 multitrack player for musicians</title>
+        <title>VAO Music Mixer</title>
         <ascript src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></ascript>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -30,32 +30,24 @@
 		<div id="console">
 		    <ul class="nav nav-tabs">
           <li ><a id="consoleTab" href="#home" data-toggle="tab">Console</a></li>
-          <li><a id="waveTab" href="#profile" data-toggle="tab">Wave</a></li>
-          <li><a class="active" href="#help" data-toggle="tab">Help</a></li>
+          <li><a id="waveTab" href="#profile" data-toggle="tab">Wave</a></li> 
         </ul>
             
         <!-- Tab panes -->
         <div class="tab-content">
           <div class="tab-pane fade in " id="home">
-              <div id="messages">Please choose a song !</div>
+              <div id="messages">Seleccione la canción</div>
           </div>
           <div class="tab-pane fade" id="profile">
               <canvas id="waveCanvas"></canvas>
           </div>
-            <div class="tab-pane fade in active" id="help">
-                <p>Version 1.0, <a href="http://miageprojet2.unice.fr/index.php?title=Intranet_de_Michel_Buffa/MT5%2C_multitrack_player_for_musicians"
-                                        target="_blank">Documentation / Manual</a></p>
-                <p><a href="https://github.com/squallooo/MT5" target="_blank">https://github.com/squallooo/MT5</a></p>
-              
-               <p>Michel Buffa, main designer</p><p>and implementer (@micbuffa)</p>
-                <p>Amine Hallili, HTML/CSS layout</p>             
-            </div>
+             
         </div>
 	</div>
 	
 		<div id="masterTools">
 		<div style="position : absolute;width : 602px;">
-			<h2 style="text-align : center;">MT5, the HTML5 Multitrack player !</h2>
+			<h2 style="text-align : center;">VAO Music Mixer</h2>
 			
 			<span id="volume">
     			<button id="bsound" onclick="masterMuteUnmute(this);" type="button" class="btn btn-default btn-lg master" style="margin-right: 28px;position: absolute;right: 0;margin-top: 28px;">
