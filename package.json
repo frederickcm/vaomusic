@@ -6,7 +6,8 @@
   "repository": "",
   "author": "Mostafa Eweda <mostafa@c9.io>",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "webpack": "^5.38.1"
   },
   "scripts": {
     "start": "node server.js",
