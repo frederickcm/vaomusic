@@ -10,7 +10,8 @@
     "webpack": "^5.38.1"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "dir"
   },
   "engines": {
     "node": ">=8" 
