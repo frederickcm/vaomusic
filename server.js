@@ -12,7 +12,7 @@ const app = express(),
 
 // Config
 const PORT = process.env.PORT,
-  TRACKS_PATH = "./client/multitrack",
+  TRACKS_PATH = "./public/multitrack",
   addrIP = process.env.IP;
 
 if (PORT == 8009) {
@@ -29,7 +29,7 @@ if (PORT == 8009) {
   });
 }
 
-app.use(express.static(path.resolve(__dirname, "client")));
+app.use(express.static(path.resolve(__dirname, "public")));
 
 // launch the http server on given port
 server.listen(PORT || 3000, addrIP || "0.0.0.0", () => {
@@ -38,7 +38,7 @@ server.listen(PORT || 3000, addrIP || "0.0.0.0", () => {
 });
 
 // routing
-app.get("/", (req, res) => res.sendfile(__dirname + "/index.html"));
+app.get("/", (req, res) => res.sendfile(__dirname + "/index.html"+__dirname));
 
 // routing
 app.get("/track", async (req, res) => {

@@ -11,13 +11,13 @@ Then look at the `server.js` file, you may want to change the default port value
 ```
 // Config
 var PORT = process.env.PORT,
-TRACKS_PATH = './client/multitrack/',
+TRACKS_PATH = './multitrack/',
 addrIP = process.env.IP;
 
 And change port and IP, for example, use something like:
 // Config
 var PORT = '8081',
-TRACKS_PATH = './client/multitrack/',
+TRACKS_PATH = './multitrack/',
 addrIP = '127.0.0.1';
 ```
 
