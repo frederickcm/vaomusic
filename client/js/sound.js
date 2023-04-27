@@ -253,7 +253,7 @@ function drawTrack(decodedBuffer, trackNumber) {
 }
 
 function finishedLoading(bufferList) {
-    log("Finished loading all tracks, press Start button above!");
+    log("Pistas Cargadas, Presione Play!");
 
     // set the decoded buffer in the song object
     currentSong.setDecodedAudioBuffers(bufferList);

@@ -24,7 +24,7 @@ BufferLoader.prototype.loadBuffer = function (url, index) {
     loader.context.decodeAudioData(
       request.response,
       function (buffer) {
-        log("Loaded and decoded track " + (loader.loadCount + 1) +
+        log("Pista cargada y codificada " + (loader.loadCount + 1) +
           "/" + loader.urlList.length + "...");
 
         if (!buffer) {
@@ -71,7 +71,7 @@ BufferLoader.prototype.load = function () {
   this.bufferList = [];
   this.loadCount = 0;
   clearLog();
-  log("Loading tracks... please wait...");
+  log("Cargando pistas...");
   console.log("BufferLoader.prototype.load urlList size = " + this.urlList.length);
   for (var i = 0; i < this.urlList.length; ++i)
     this.loadBuffer(this.urlList[i], i);
