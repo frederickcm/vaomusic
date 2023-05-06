@@ -1,136 +1,128 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-        <title>VAO Music Mixer</title>
-        <ascript src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></ascript>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/view.js"></script>
-        <script src="js/waveformDrawer.js"></script>
-        <script src="js/track.js"></script>
-        <script src="js/song.js"></script>
-        <script src="js/buffer-loader.js"></script>
-        <script src="js/sound.js"></script>
-        <script src="js/jquery.knob.js"></script>
-        <script src="js/knob.js"></script>
-        <script src="js/utils.js"></script>
-        <script src="js/canvasArrows.js"></script>
-        <script src="js/range-touch.js"></script>
-        <script src="js/recorderjs/recorder.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-		    <link rel="stylesheet" type="text/css" href="css/style.css" /> 
-    </head>
-    <body onload="init();">
-      <div class="container">
-      <div id="app">
-        <div class="row">
-          <div class="col-md-6">
-            <div id="masterTools">
-              <div >
-                <h2 style="text-align : center;">VAO Music Mixer</h2>
-                
-                <span id="volume">
-                    <button id="bsound" onclick="masterMuteUnmute(this);" type="button" class="btn btn-default btn-lg master" style="margin-right: 28px;position: absolute;right: 0;margin-top: 28px;">
-                            <span class="glyphicon glyphicon-volume-up"></span>
-                          </button>
-                    <input id ="masterVolume" class="knob masterVolume" data-width="100" data-height="100" data-displayInput=false value="100">
-                </span>
-                
-                <table style="margin-left: auto; margin-right: auto;">
-                    <tr><td>
-                        <button id="bplay" type="button" class="btn btn-default btn-lg" onclick="playAllTracks(0);" disabled>
-                                <span class="glyphicon glyphicon-play"></span>
-                              </button>
-                              
-                              <button id="bpause" onclick="pauseAllTracks();" disabled type="button" class="btn btn-default btn-lg">
-                                <span class="glyphicon glyphicon-pause"></span>
-                              </button>
-                              
-                              <button id="bstop" onclick="stopAllTracks();"  type="button" class="btn btn-default btn-lg" disabled>
-                                <span class="glyphicon glyphicon-stop"></span>
-                              </button>
-                              <button style="display: none;" id="bstop" onclick="addNewTrackForRecord();"  type="button" class="btn btn-default btn-lg" disabled>
-                                <span class="glyphicon glyphicon-record"></span>
-                              </button>
-                              <button style="display: none;" id="brecordMix" onclick="toggleRecordMix();"type="button" class="btn btn-default btn-lg" style="font-size: 10px;
-          padding: 0;" disabled>Record mix
-                              </button>
-                    </td></tr>
-                    <tr><td id="loopBox">
-                        <button id="loopStart" onclick="setLoopStart();" type="button" class="btn btn-default btn-lg" style="font-size: 10px;
-          padding: 0;" disabled>
-                                Start Loop
-                              </button>
-                              
-                              <button id="loopEnd"  onclick="setLoopEnd();" type="button" class="btn btn-default btn-lg" style="font-size: 10px;
-          padding: 0;" disabled>
-                                End loop
-                              </button>
-                              
-                              <button id="loopReset"  onclick="resetSelection();" type="button" class="btn btn-default btn-lg" style="font-size: 10px;
-          padding: 0;" disabled>
-                                Reset loop
-                              </button>
-                              
-                              <button onclick="loopOnOff();" id="loopOnOff" type="button" class="btn btn-default btn-lg" disabled>
-                                <span class="glyphicon glyphicon-repeat"></span>
-                              </button>
-                    </td></tr>
-                    <tr><td>
-                        <div id="songs" class="styled-select"></div>
-                        <br/>
-                    </td></tr>
-                </table>
-              </div>
-            </div>
-            
-          </div>
-          <div class="col-md-6">
+<head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>VAO Music Mixer</title>
+  <ascript src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></ascript>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/view.js"></script>
+  <script src="js/waveformDrawer.js"></script>
+  <script src="js/track.js"></script>
+  <script src="js/song.js"></script>
+  <script src="js/buffer-loader.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/jquery.knob.js"></script>
+  <script src="js/knob.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/canvasArrows.js"></script>
+  <script src="js/range-touch.js"></script>
+  <script src="js/recorderjs/recorder.js"></script> 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cyborg/bootstrap.min.css">
+  <link href="css/bootstrap-glyphicons.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+ 
+</head>
+<body onload="init();">
+  <div class="container" id="app">
+    <div class="row">
+      <div class="col-md-12" > 
+          <h2 style="text-align : center;">VAO Music Mixer</h2>
+      </div>
+    </div>    
+    <div class="row">
+      <div class="col-md-6"  >  
+          <span id="volume" style="display:none">
+              <button id="bsound" onclick="masterMuteUnmute(this);" type="button" class="btn btn-default btn-lg master" style="margin-right: 28px;position: absolute;right: 0;margin-top: 28px;">
+                      <span class="glyphicon glyphicon-volume-up"></span>
+                    </button>
+              <input id ="masterVolume" class="knob masterVolume" data-width="100" data-height="100" data-displayInput=false value="100">
+          </span>
 
-            <div id="console">
-              <ul class="nav nav-tabs">
-                <li ><a id="consoleTab" href="#home" data-toggle="tab">Consola</a></li>
-                <li><a id="waveTab" href="#profile" data-toggle="tab">Wave</a></li> 
-              </ul>
-                  
-              <!-- Tab panes -->
-              <div class="tab-content">
-                <div class="tab-pane fade in " id="home">
-                    <div id="messages">Seleccione la canción</div>
-                </div>
-                <div class="tab-pane fade" id="profile">
-                    <canvas id="waveCanvas"></canvas>
-                </div>
-              </div>
+          <div class="row">
+            <div class="col-lg-12"> 
+
+              <p class="bs-component">
+                <button id="bplay" type="button" class="btn btn-success btn-lg" onclick="playAllTracks(0);">
+                <span class="glyphicon glyphicon-play"></span>
+                </button>
+
+                <button id="bpause" onclick="pauseAllTracks();" type="button" class="btn btn-warning btn-lg" disabled="">
+                <span class="glyphicon glyphicon-pause"></span>
+                </button>
+
+                <button id="bstop" onclick="stopAllTracks();" type="button" class="btn btn-danger btn-lg" disabled="">
+                <span class="glyphicon glyphicon-stop"></span>
+                </button>
+                <button style="display: none;" id="bstop" onclick="addNewTrackForRecord();" type="button" class="btn btn-info btn-lg" disabled="">
+                <span class="glyphicon glyphicon-record"></span>
+                </button>
+                <button style="display: none;" id="brecordMix" onclick="toggleRecordMix();" type="button" class="btn btn-default btn-lg">Record mix
+                </button>
+              </p>
+
+
+            </div> 
+          </div> 
+          <div class="row">
+            <div class="col-lg-12">
+              <p class="bs-component">
+                  <button type="button" id="loopStart" class="btn btn-success" onclick="setLoopStart(0);" disabled>Start Loop</button>
+                  <button type="button" class="btn btn-warning" id="loopEnd" onclick="setLoopEnd();" disabled >End loop</button>
+                  <button type="button" id="loopReset" onclick="resetSelection();"  disabled class="btn btn-danger">Reset loop</button>
+                  <button type="button" id="loopOnOff" onclick="loopOnOff();"  disabled class="btn btn-info"><span class="glyphicon glyphicon-repeat"></span></button>
+              </p>
+            </div> 
+          </div> 
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div id="songs" class="styled-select"></div>
+            </div> 
           </div>
+      </div>
+      <div class="col-md-4">
+        <div id="console">
+          <ul class="nav nav-tabs">
+            <li style="display: none;"><a id="consoleTab" href="#home" data-toggle="tab">Consola</a></li>
+            <li><a id="waveTab" href="#profile" data-toggle="tab"></a></li> 
+          </ul>
+              
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane fade in " id="home">
+                <div id="messages">Seleccione la canción</div>
+            </div>
+            <div class="tab-pane fade" id="profile">
+                <canvas id="waveCanvas"></canvas>
+            </div>
           </div>
         </div>
-
-
-        <div class="row" id="scroll">
-          <div class="col-md-3">
-         
-              <div id="trackControl">
-                <table id="tracks"></table>
-              </div>
-              
-           
-          </div>
-          <div class="col-md-9">
-            <div id="canvass">
-              <div style="position: relative;">
-                <canvas id="myCanvas" width="602" height="400" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
-                <canvas id="frontCanvas"                       style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
-              </div>
-            </div>
-          </div>
-        </div> 
-
-
       </div>
+    </div>
+
+
+    <div class="row" id="scroll">
+      <div class="col-md-3">
+          <div id="trackControl" class="table">
+            <table class="table" id="tracks"></table>
+          </div>
       </div>
-    </body>
+      <div class="col-md-9">
+        <div id="canvas">
+          <div style="position: relative;">
+            <canvas id="myCanvas" width="500" height="400" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+            <canvas id="frontCanvas"                       style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+
+  </div> 
+  
+  <!-- Bootstrap JS --> 
+</body>
 </html>
